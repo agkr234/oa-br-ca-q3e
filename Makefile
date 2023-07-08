@@ -63,7 +63,7 @@ endif
 # causing problems with keeping up to date with the repository.
 #
 #############################################################################
--include Makefile.local
+# -include Makefile.local
 
 ifeq ($(COMPILE_PLATFORM),darwin)
   USE_SDL=1
@@ -510,6 +510,10 @@ else
     ifeq ($(USE_CURL_DLOPEN),0)
       CLIENT_LDFLAGS += -lcurl
     endif
+  endif
+
+  ifeq ($(USE_CODEC_VORBIS),1)
+    CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
   ifeq ($(PLATFORM),linux)
